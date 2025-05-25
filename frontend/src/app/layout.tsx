@@ -1,26 +1,20 @@
-import type { Metadata } from "next";
+import { Montserrat as FontSans } from "next/font/google";
 import "@/styles/globals.css";
 import { StarknetProvider } from "~/StarknetProvider";
-import Footer from "./components/internal/Footer";
-import { Analytics } from "./components/internal/Analytics";
+import { getMetadata } from "@/utils/getMetadata";
+import { Toaster } from 'react-hot-toast';
+import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Starknet Scaffold",
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+export const metadata = getMetadata({
+  title: "AgroVest",
   description:
-    "Build pixel-perfect dApps on Starknet with our modern, streamlined Starknet-Scaffold. Featuring NextJS, Starknetjs, Starknetkit, Starknet-React, and Typescript, it’s fully equipped for Scarb and Starknet Foundry contract development. Simplify your workflow and focus on innovation. Starknet scaffold is an open-source, up-to-date toolkit for building decentralized applications (dapps) on Starknet.",
-  openGraph: {
-    title: "Starknet Scaffold",
-    description:
-      "An open-source, up-to-date toolkit for building decentralized applications (dapps) on Starknet.",
-    url: "https://app.starknetscaffold.xyz/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Starknet Scaffold",
-    description:
-      "An open-source, up-to-date toolkit for building decentralized applications (dapps) on Starknet.",
-  },
-};
+    "Tokenize your business, attract investors, while showcasing your products on a thriving marketplace.",
+});
 
 export default function RootLayout({
   children,
@@ -28,11 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="font-coolvetica text-sm text-text-primary md:text-md">
-        <StarknetProvider>{children}</StarknetProvider>
-        <Footer />
-        <Analytics />
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn("min-h-screen antialiased bg-white", fontSans.variable)}>
+        <StarknetProvider>
+          {children}
+          <Toaster position="top-right" />
+        </StarknetProvider>
       </body>
     </html>
   );

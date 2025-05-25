@@ -52,9 +52,6 @@ const config: Config = {
         "primary-gradient":
           "linear-gradient(180deg, #FF8D4E -9.12%, #FF6734 39.7%)",
       },
-      fontFamily: {
-        coolvetica: ["coolvetica", "sans-serif"],
-      },
       boxShadow: { "popover-shadow": "0px 0px 50px 2px #EC796B33" },
     },
   },
