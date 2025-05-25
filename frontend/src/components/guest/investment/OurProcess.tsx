@@ -3,7 +3,7 @@ import React from 'react'
 
 const OurProcess = () => {
   return (
-    <main className="w-full flex md:flex-row flex-col justify-between gap-6 bg-darkgreen lg:px-12 md:px-6 px-4 md:mt-20 mt-12 lg:mb-20 py-12 relative">
+    <main className="w-full flex md:flex-row flex-col justify-between gap-6 bg-darkgreen lg:px-12 md:px-6 px-4 md:mt-28 mt-12 lg:mb-20 py-12 relative">
       <div className='flex flex-col gap-10 lg:w-[30%]'>
         <h1 className="md:text-4xl text-3xl text-lightgreen font-semibold">Our Process</h1>
         <ul className='flex flex-col gap-7 list-none'>
@@ -13,7 +13,7 @@ const OurProcess = () => {
           </li>
           <li className='flex gap-4 items-start'>
             <h5 className='px-4 py-3 flex items-center justify-center bg-lightgreen text-darkgreen font-bold mt-1'>2</h5>
-            <p className='text-base text-gray-200'>Create a business profile: Register and tokenize your agricultural business on AgroVest. Upload your business details, complete the verification process, and create digital tokens representing ownership stakes. </p>
+            <p className='text-base text-gray-200'>Browse Opportunities: Explore a diverse selection of agricultural projects on AgroVest. From innovative agri-tech ventures to sustainable farming initiatives, our platform offers carefully vetted opportunities that align with your investment goals.  </p>
           </li>
         </ul>
       </div>
@@ -22,11 +22,11 @@ const OurProcess = () => {
         <ul className='flex flex-col gap-7 list-none'>
           <li className='flex gap-4 items-start'>
             <h5 className='px-4 py-3 flex items-center justify-center bg-lightgreen text-darkgreen font-bold mt-1'>3</h5>
-            <p className='text-base text-gray-200'>Engage with Investors:  Investors can explore tokenized agricultural assets, review business profiles, and make investments directly in the businesses that interest them.</p>
+            <p className='text-base text-gray-200'>Invest:  Once you've found a project that resonates with you, dive into the details. Review the business plan, assess potential returns, and confidently make your investment. AgroVest makes it simple to support the ventures you believe in.</p>
           </li>
           <li className='flex gap-4 items-start'>
             <h5 className='px-4 py-3 flex items-center justify-center bg-lightgreen text-darkgreen font-bold mt-1'>4</h5>
-            <p className='text-base text-gray-200'>Showcase your product: List your agricultural products on our dynamic marketplace. Create detailed product profiles with images, descriptions, and pricing to attract potential buyers.  </p>
+            <p className='text-base text-gray-200'>Monitor & Grow: After investing, keep an eye on your portfolio with AgroVest's tracking tools. Monitor the progress of your investments and enjoy the growth as the projects you've supported thrive.  </p>
           </li>
         </ul>
       </div>
