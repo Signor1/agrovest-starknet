@@ -12,6 +12,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        lightgreen: "#D2FE75",
+        darkgreen: "#02390F",
         "background-primary-light": "#FFFFFF",
         "background-primary-dark": "#1F1F1F",
         "accent-primary": "#FF7300",
