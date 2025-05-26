@@ -6,7 +6,7 @@ fn main() {
     let nonce = get_nonce('latest');
 
     let declare_result = declare(
-        "HelloStarknet",
+        "Farm",
         FeeSettings::Eth(EthFeeSettings { max_fee: Option::Some(max_fee) }),
         Option::Some(nonce),
     )

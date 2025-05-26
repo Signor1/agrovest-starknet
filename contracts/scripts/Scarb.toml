@@ -18,5 +18,5 @@ casm = true
 sierra = true
 casm = true
 build-external-contracts = [
-    "contracts::HelloStarknet"
+    "contracts::Farm"
 ]
