@@ -2,7 +2,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useContext, useState } from "react";
 import Products from "./Products";
 import {
   Modal,
@@ -13,17 +13,25 @@ import {
   useDisclosure,
 } from "@heroui/react";
 import Image from "next/image";
+import { uploadImageToIPFS } from "@/utils/uploadToIPFS";
+import { KitContext } from "@/context/kit-context";
+import { a } from "node_modules/framer-motion/dist/types.d-CtuPurYT";
+import toast from "react-hot-toast";
+import { byteArray, cairo } from "starknet";
 
 const MyMarket = () => {
   const path = usePathname();
+  const { agrovestContract } = useContext(KitContext);
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   // Uplaod to IPFS and return of the URI
   const [selectedFile, setSelectedFile] = useState<any>();
 
-  const handleSelectImage = ({ target }: { target: any }) => {
+  const handleSelectImage = async ({ target }: { target: any }) => {
     setSelectedFile(target.files[0]);
+    const imageHash = await uploadImageToIPFS(target.files[0]);
+    setProductImage(imageHash);
   };
 
   const [productName, setProductName] = useState("");
@@ -31,9 +39,25 @@ const MyMarket = () => {
   const [productDesc, setProductDesc] = useState("");
   const [productPrice, setProductPrice] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    toast.loading("Adding Product...");
+    try {
+      const createProductResult = await agrovestContract!.add_farm_product(
+        productName,
+        byteArray.byteArrayFromString(productImage),
+        byteArray.byteArrayFromString(productDesc),
+        cairo.uint256(productPrice),
+      );
+      console.log(createProductResult);
+      toast.dismiss();
+      toast.success("Product added successfully");
+    } catch (error) {
+      toast.error(`error: ${error}`);
+      console.log(error);
+    }
   };
+  
   return (
     <section className="flex w-full flex-col gap-6 py-4">
       <h1 className="text-base font-semibold uppercase text-darkgreen md:text-xl">

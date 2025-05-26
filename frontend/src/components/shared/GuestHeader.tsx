@@ -3,18 +3,18 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import MaxWrapper from "./MaxWrapper";
-import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import React, { useContext, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/utils/navLinks";
 import logo from "../../../public/logo-white.png";
-import { useAccount } from "@starknet-react/core";
 import ConnectButton from "@/app/components/lib/Connect";
 import AddressBar from "@/app/components/lib/AddressBar";
+import { KitContext } from "@/context/kit-context";
 
 const GuestHeader = () => {
-  const { address } = useAccount();
+  const { address } = useContext(KitContext);
   const [showMobileNav, setShowMobileNav] = useState(false);
-
+  const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -25,15 +25,10 @@ const GuestHeader = () => {
     }
   });
 
-  // const { open } = useWeb3Modal()
-  // const { address, isConnected } = useAccount()
-  // const { walletInfo } = useWalletInfo()
+  useEffect(() => {
+    address && router.push("/user");
+  }, [address]);
 
-  // const walletConnect = () => {
-  //     if (!isConnected) {
-  //         open()
-  //     }
-  // }
 
   return (
     <header className="w-full overflow-hidden">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "./Logo";
 import logo from "../../../public/logo-green.png";
 import Greeting from "./Greeting";
@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useAccount } from "@starknet-react/core";
 import AddressBar from "@/app/components/lib/AddressBar";
 import ConnectButton from "@/app/components/lib/Connect";
+import { KitContext } from "@/context/kit-context";
 const DashboardHeader = ({
   sidebarOpen,
   setSidebarOpen,
@@ -13,7 +14,7 @@ const DashboardHeader = ({
   sidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { address } = useAccount();
+  const { address } = useContext(KitContext);
   return (
     <header className="drop-shadow-1 sticky top-0 z-[99] flex w-full bg-white">
       <div className="flex flex-grow items-center justify-between px-8 py-4 shadow md:px-2 2xl:px-11">
