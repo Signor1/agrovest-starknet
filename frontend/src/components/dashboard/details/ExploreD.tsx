@@ -1,6 +1,6 @@
 'use client'
 import { farmData, FarmDataType } from '@/utils/products';
-import { Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure } from '@nextui-org/react'
+import { Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure } from "@heroui/react"
 import Image from 'next/image';
 import React, { FormEvent, useMemo, useState } from 'react'
 import { FaLocationDot } from 'react-icons/fa6';

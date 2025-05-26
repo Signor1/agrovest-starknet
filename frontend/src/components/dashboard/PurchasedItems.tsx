@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/table"
 import { cartItems } from '@/utils/cart'
 import Image from 'next/image'
-import { Button } from '@nextui-org/react'
+import { Button } from "@heroui/react"
 
 const PurchasedItems = () => {
   const path = usePathname()

@@ -14,7 +14,7 @@ import {
 import { cartItems as initialCartItems } from '@/utils/cart'
 import Image from 'next/image'
 import { FaMinus, FaPlus } from 'react-icons/fa6';
-import { Button } from '@nextui-org/react'
+import { Button } from "@heroui/react"
 
 const MyCarts = () => {
   const path = usePathname()

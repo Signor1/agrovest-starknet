@@ -2,7 +2,7 @@
 'use client'
 import Image from 'next/image'
 import React, { FormEvent, useState } from 'react'
-import { Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure } from "@heroui/react";
 import { farmData } from '@/utils/products';
 import { useRouter } from 'next/navigation';
 

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { nextui } from "@nextui-org/react";
+import { heroui } from "@heroui/react";
 import tailwindAnimate from "tailwindcss-animate";
 
 const config: Config = {
@@ -9,7 +9,7 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   prefix: "",
   theme: {
@@ -51,7 +51,7 @@ const config: Config = {
       boxShadow: { "popover-shadow": "0px 0px 50px 2px #EC796B33" },
     },
   },
-  plugins: [nextui(), tailwindAnimate],
+  plugins: [heroui(), tailwindAnimate],
 } satisfies Config;
 
 export default config;

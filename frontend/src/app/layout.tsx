@@ -4,6 +4,7 @@ import { StarknetProvider } from "~/StarknetProvider";
 import { getMetadata } from "@/utils/getMetadata";
 import { Toaster } from 'react-hot-toast';
 import { cn } from "@/lib/utils";
+import { UIProvider } from "./providers";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen antialiased bg-white", fontSans.variable)}>
         <StarknetProvider>
-          {children}
+          <UIProvider>
+            {children}
+          </UIProvider>
           <Toaster position="top-right" />
         </StarknetProvider>
       </body>

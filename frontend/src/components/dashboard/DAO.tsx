@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { farmInvestments } from '@/utils/products';
-import { Button } from '@nextui-org/react';
+import { Button } from "@heroui/react";
 
 const DAO = () => {
   return (

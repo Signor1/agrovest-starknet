@@ -2,7 +2,7 @@
 import { farmProducts, ProductType } from '@/utils/products';
 import Image from 'next/image';
 import React, { FormEvent, useMemo, useState } from 'react'
-import { Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure } from '@nextui-org/react'
+import { Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure } from "@heroui/react"
 import { FaMinus, FaPlus } from 'react-icons/fa6';
 import avatar from "@/public/avatar.png"
 import { reviews } from '@/utils/reviews';
