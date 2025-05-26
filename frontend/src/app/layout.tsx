@@ -2,7 +2,7 @@ import { Montserrat as FontSans } from "next/font/google";
 import "@/styles/globals.css";
 import { StarknetProvider } from "~/StarknetProvider";
 import { getMetadata } from "@/utils/getMetadata";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import { UIProvider } from "./providers";
 
@@ -24,11 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen antialiased bg-white", fontSans.variable)}>
+      <body
+        className={cn("min-h-screen bg-white antialiased", fontSans.variable)}
+      >
         <StarknetProvider>
-          <UIProvider>
-            {children}
-          </UIProvider>
+          <UIProvider>{children}</UIProvider>
           <Toaster position="top-right" />
         </StarknetProvider>
       </body>

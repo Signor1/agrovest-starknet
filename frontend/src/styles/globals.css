@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-
   .feat-link:focus-within a,
   .feat-link:hover a {
     background-color: #ffebda;
@@ -122,7 +121,6 @@
     box-sizing: inherit;
   }
 
-
   :root {
     --100vh: 100vh;
     --100svh: 100svh;
@@ -130,7 +128,6 @@
   }
 
   @media only screen and (max-width: 1600px) and (min-width: 768px) {
-
     :root {
       --100vh: calc(100vh / 0.8);
       --100svh: calc((100svh / 0.8) - (3rem / 0.8));
@@ -188,12 +185,10 @@
   .no-scroll::-webkit-scrollbar {
     display: none;
   }
-
-
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

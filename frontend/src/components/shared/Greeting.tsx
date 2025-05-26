@@ -18,7 +18,7 @@ const Greeting = () => {
   }, []);
 
   return (
-    <h2 className="text-darkgreen text-base md:text-lg ml-2 font-semibold capitalize">
+    <h2 className="ml-2 text-base font-semibold capitalize text-darkgreen md:text-lg">
       Good {timeOfDay}
     </h2>
   );

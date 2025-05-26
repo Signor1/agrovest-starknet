@@ -71,7 +71,7 @@ const TransactionItem = ({ transaction }: { transaction: Transaction }) => {
   return (
     <div className="flex items-center gap-4 rounded-[12px] border-[1px] border-solid border-[--headings] bg-transparent p-2 text-sm md:p-4">
       <div>
-        <span className="grid h-12 w-12 place-content-center rounded-[8px] bg-yellow-secondary text-l text-yellow-primary">
+        <span className="text-l grid h-12 w-12 place-content-center rounded-[8px] bg-yellow-secondary text-yellow-primary">
           <WarnBadge />
         </span>
       </div>
@@ -86,7 +86,7 @@ const TransactionItem = ({ transaction }: { transaction: Transaction }) => {
                 className="mx-auto h-full w-full rounded-full"
               />
             </div>
-            <p className="text-primary text-sm text-yellow-primary">
+            <p className="text-sm text-primary text-yellow-primary">
               {starkProfile?.name ||
                 address?.slice(0, 6).concat("...").concat(address?.slice(-5))}
             </p>

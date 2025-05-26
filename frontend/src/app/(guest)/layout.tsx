@@ -6,7 +6,6 @@ export default function GuestLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <section className="w-full">
       <GuestHeader />

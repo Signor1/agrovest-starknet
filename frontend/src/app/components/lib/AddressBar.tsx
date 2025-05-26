@@ -8,7 +8,7 @@ import Blockies from "react-blockies";
 import AccountBalance from "./AccountBalance";
 import GenericModal from "../internal/util/GenericModal";
 import Close from "public/svg/Close";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CopyButton from "../internal/util/CopyButton";
 
 const UserModal = () => {
@@ -25,9 +25,9 @@ const UserModal = () => {
       style="mt-[5rem] w-full bg-transparent backdrop:mt-[1.5rem] md:mt-[5rem] md:backdrop:mt-[5rem] h-screen"
     >
       <div className="user-modal mx-auto flex w-full max-w-[--header-max-w] flex-col items-center py-8 md:items-end md:px-12">
-        <div className="flex max-w-[25rem] flex-col justify-between gap-4 rounded-[24px] bg-[--background] p-8 text-md text-text-primary shadow-popover-shadow transition-colors duration-500 ease-linear md:max-w-[30rem]">
+        <div className="text-md flex max-w-[25rem] flex-col justify-between gap-4 rounded-[24px] bg-[--background] p-8 text-text-primary shadow-popover-shadow transition-colors duration-500 ease-linear md:max-w-[30rem]">
           <div className="flex justify-between">
-            <h3 className="text-l text-[--headings]">Connected</h3>
+            <h3 className="text-sm text-[--headings]">Connected</h3>
             <button
               // @ts-ignore
               popovertarget="user-popover"
@@ -49,7 +49,7 @@ const UserModal = () => {
                 <Blockies
                   seed={address || ""}
                   scale={12}
-                  className="mx-auto h-full w-full scale-100 rounded-full md:scale-100"
+                  className="mx-auto h-full w-full rounded-full"
                 />
               )}
             </div>

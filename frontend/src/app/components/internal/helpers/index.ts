@@ -17,13 +17,10 @@ export const searchResources = async ({
   );
 };
 
-
 export const formatCurrency = (currency: number) => {
   let amount = currency / 1e18;
   return amount || 0;
-}
-
-
+};
 
 export const formatDate = (isoString: string): string => {
   const options: Intl.DateTimeFormatOptions = {
@@ -35,4 +32,4 @@ export const formatDate = (isoString: string): string => {
   };
   const date = new Date(isoString);
   return date.toLocaleDateString("en-US", options);
-}
+};

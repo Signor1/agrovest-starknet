@@ -41,7 +41,7 @@ export default function Pagination({ count }: { count: number }) {
           disabled={currentPage === 1}
         >
           <span className="inline-block rotate-180">
-            <RightChevron/>
+            <RightChevron />
           </span>
 
           <span>Previous</span>
@@ -53,7 +53,7 @@ export default function Pagination({ count }: { count: number }) {
         >
           <span>Next</span>
           <span>
-          <RightChevron/>
+            <RightChevron />
           </span>
         </button>
       </div>

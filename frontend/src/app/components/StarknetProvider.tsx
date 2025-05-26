@@ -1,5 +1,5 @@
 "use client";
-import { sepolia, mainnet } from "@starknet-react/chains";
+import { sepolia } from "@starknet-react/chains";
 import {
   alchemyProvider,
   argent,
@@ -50,7 +50,7 @@ export function StarknetProvider({ children }: StarknetProviderProps) {
   return (
     <StarknetConfig
       connectors={connectors}
-      chains={[mainnet, sepolia]}
+      chains={[sepolia]}
       provider={provider}
       explorer={starkscan}
       autoConnect

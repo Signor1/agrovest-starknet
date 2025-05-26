@@ -91,7 +91,7 @@ export default function NetworkSwitcher() {
                 }}
               >
                 <span
-                  className={`mr-2 text-md ${selectedNetwork === network.value ? "opacity-100" : "opacity-0"}`}
+                  className={`text-md mr-2 ${selectedNetwork === network.value ? "opacity-100" : "opacity-0"}`}
                 >
                   <Check />
                 </span>
