@@ -10,7 +10,8 @@ import {
   nethermindProvider,
   reddioProvider,
   StarknetConfig,
-  starkscan,
+  publicProvider,
+  voyager,
   useInjectedConnectors,
 } from "@starknet-react/core";
 import { ArgentMobileConnector } from "starknetkit/argentMobile";
@@ -52,8 +53,8 @@ export function StarknetProvider({ children }: StarknetProviderProps) {
     <StarknetConfig
       connectors={connectors}
       chains={[sepolia]}
-      provider={provider}
-      explorer={starkscan}
+      provider={publicProvider()}
+      explorer={voyager}
       autoConnect
     >
       {children}
