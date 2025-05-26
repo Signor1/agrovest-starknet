@@ -3,10 +3,6 @@ import { farmProducts, ProductType } from "@/utils/products";
 import Image from "next/image";
 import React, { FormEvent, useContext, useMemo, useState } from "react";
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
   Button,
   useDisclosure,
 } from "@heroui/react";
@@ -29,7 +25,6 @@ const ProductD = ({ id }: { id: string }) => {
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const [review, setReview] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
 
   const handleIncrement = () => {
