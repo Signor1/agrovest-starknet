@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useConnect, useContractRead } from "@starknet-react/core";
+import { useConnect, useReadContract } from "@starknet-react/core";
 import { shortString } from "starknet";
 import Close from "public/svg/Close";
 import GenericModal from "../internal/util/GenericModal";
@@ -13,24 +13,24 @@ const AddTokenModal = () => {
   const [decimals, setDecimals] = useState("");
   const [name, setName] = useState("");
 
-  const { data: tokenName } = useContractRead({
+  const { data: tokenName } = useReadContract({
     abi: erc20MetadataAbi,
     functionName: "name",
-    address: tokenAddress,
+    address: tokenAddress as `0x${string}`,
     args: [],
   });
 
-  const { data: tokenSymbol } = useContractRead({
+  const { data: tokenSymbol } = useReadContract({
     abi: erc20MetadataAbi,
     functionName: "symbol",
-    address: tokenAddress,
+    address: tokenAddress as `0x${string}`,
     args: [],
   });
 
-  const { data: tokenDecimals } = useContractRead({
+  const { data: tokenDecimals } = useReadContract({
     abi: erc20MetadataAbi,
     functionName: "decimals",
-    address: tokenAddress,
+    address: tokenAddress as `0x${string}`,
     args: [],
   });
 

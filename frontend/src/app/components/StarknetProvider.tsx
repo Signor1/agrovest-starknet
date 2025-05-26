@@ -4,6 +4,7 @@ import {
   alchemyProvider,
   argent,
   braavos,
+  Connector,
   infuraProvider,
   lavaProvider,
   nethermindProvider,
@@ -27,8 +28,8 @@ export function StarknetProvider({ children }: StarknetProviderProps) {
 
   const connectors = [
     ...injected,
-    new WebWalletConnector({ url: "https://web.argent.xyz" }),
-    new ArgentMobileConnector(),
+    new WebWalletConnector({ url: "https://web.argent.xyz", }) as unknown as Connector,
+    new ArgentMobileConnector() as unknown as Connector,
   ];
 
   const apiKey = process.env.NEXT_PUBLIC_API_KEY!;

@@ -92,7 +92,7 @@ const ConnectModal = () => {
               {connectors.map((connector, index) => (
                 <Wallet
                   key={connector.id || index}
-                  src={connector.icon.light!}
+                  src={typeof connector.icon === "string" ? connector.icon : connector.icon.light}
                   name={connector.name}
                   connector={connector}
                   alt="alt"
