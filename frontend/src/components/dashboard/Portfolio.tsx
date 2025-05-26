@@ -1,5 +1,6 @@
 "use client";
-import { farmData } from "@/utils/products";
+import { KitContext } from "@/context/kit-context";
+import { uploadImageToIPFS } from "@/utils/uploadToIPFS";
 import {
   Modal,
   ModalContent,
@@ -9,30 +10,68 @@ import {
 } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import React, { FormEvent, useState } from "react";
+import { usePathname } from "next/navigation";
+import React, { FormEvent, useContext, useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import { cairo } from "starknet";
 
 const UserPortfolio = () => {
   const path = usePathname();
-  const router = useRouter();
-
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { agrovestContract, readAgrovestContract, address } = useContext(KitContext);
 
   // Uplaod to IPFS and return of the URI
   const [selectedFile, setSelectedFile] = useState<any>();
+  const [farmDetails , setFarmDetails] = useState<any>();
 
-  const handleSelectImage = ({ target }: { target: any }) => {
+  const getFarmDetails = async () => {
+    const details = await readAgrovestContract!.get_user_farm_details();
+    console.log(details);
+    return details;
+  }
+
+  useEffect(() => {
+    async()=>{
+     console.log(await getFarmDetails()); 
+    }
+  }, [address]);
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+
+  const handleSelectImage = async ({ target }: { target: any }) => {
     setSelectedFile(target.files[0]);
+    setSelectedFile(target.files[0]);
+    const imageHash = await uploadImageToIPFS(target.files[0]);
+    setProductImage(imageHash);
   };
 
-  const [productName, setProductName] = useState("");
+  
+
+  const [farmName, setFarmName] = useState("");
   const [productImage, setProductImage] = useState("");
-  const [productDesc, setProductDesc] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-  };
+  const [farmLocation, setFarmLocation] = useState("");
+  const [farmContactNumber, setFarmContactNumber] = useState("");
+  const [farmEmail, setFarmEmail] = useState("");
+    const handleSubmit = async (e: FormEvent) => {
+      e.preventDefault();
+      toast.loading("Updating farm profile...");
+      try {
+        const createProductResult = await agrovestContract!.register_farms(
+          farmName,
+          productImage,
+          farmLocation,
+          cairo.uint256(farmContactNumber),
+          address,
+          farmEmail
+        );
+        console.log(createProductResult);
+        toast.dismiss();
+        toast.success("Farm Profile updated successfully");
+      } catch (error) {
+        toast.error(`error: ${error}`);
+        console.log(error);
+      }
+    };
 
   return (
     <section className="flex w-full flex-col gap-6 py-4">
@@ -47,7 +86,6 @@ const UserPortfolio = () => {
           Add Farm
         </Button>
       </div>
-
 
       <main className="grid w-full gap-4 bg-gray-100 md:grid-cols-3 lg:grid-cols-5">
         <div className="flex flex-col items-center justify-center gap-2 rounded-[5px] p-3">
@@ -93,48 +131,13 @@ const UserPortfolio = () => {
         </Link>
       </div>
 
-      {/* <div className="grid w-full gap-8 md:grid-cols-2">
-        {farmData.slice(0, 1).map((res, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-end gap-2 rounded-[10px] bg-gray-100 p-4 shadow-lg"
-          >
-            <div className="h-[200px] w-full">
-              <Image
-                src={res.imageUrl}
-                alt={res.altText}
-                width={2480}
-                height={1360}
-                quality={100}
-                priority
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="flex w-full items-center justify-between">
-              <h4 className="text-left text-base font-semibold text-gray-700">
-                {res.name}
-              </h4>
-            </div>
-            <p className="text-sm text-gray-500">{res.description}</p>
-            <button
-              className="mt-3 rounded-[7px] bg-darkgreen px-6 py-2.5 text-base text-lightgreen"
-              onClick={() => router.push(`/user/portfolio/${res.id}`)}
-            >
-              View more
-            </button>
-          </div>
-        ))}
-
-      </div>
-
-
       {/* modal  */}
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {() => (
             <>
               <ModalHeader className="flex flex-col gap-1 capitalize text-gray-800">
-                Edit Farm Profile
+                Farm Details
               </ModalHeader>
               <ModalBody className="flex flex-col gap-4 py-3">
                 <form className="grid w-full gap-4" onSubmit={handleSubmit}>
@@ -204,19 +207,19 @@ const UserPortfolio = () => {
                   </div>
                   <div className="flex flex-col">
                     <label
-                      htmlFor="productName"
+                      htmlFor="farmName"
                       className="ml-1 font-medium text-gray-700"
                     >
                       Farm Name
                     </label>
                     <input
                       type="text"
-                      name="productName"
-                      id="productName"
-                      placeholder="Enter product name"
+                      name="farmName"
+                      id="farmName"
+                      placeholder="Enter farm name"
                       className="caret-color1 border-color1 bg-color1/5 w-full rounded-lg border px-4 py-3 text-sm text-gray-700 outline-none"
-                      value={productName}
-                      onChange={(e) => setProductName(e.target.value)}
+                      value={farmName}
+                      onChange={(e) => setFarmName(e.target.value)}
                       required
                     />
                   </div>
@@ -231,7 +234,7 @@ const UserPortfolio = () => {
                       type="text"
                       name="productImg"
                       id="productImg"
-                      placeholder="Product Image URI"
+                      placeholder="Farm Image URI"
                       className="caret-color1 border-color1 bg-color1/5 w-full rounded-lg border px-4 py-3 text-sm text-gray-700 outline-none"
                       value={productImage}
                       onChange={(e: any) => setProductImage(e.target.value)}
@@ -241,37 +244,54 @@ const UserPortfolio = () => {
                   </div>
                   <div className="flex flex-col">
                     <label
-                      htmlFor="productDesc"
+                      htmlFor="FarmLocation"
                       className="ml-1 font-medium text-gray-700"
                     >
-                      Farm Description
+                      Farm Location
                     </label>
                     <input
                       type="text"
-                      name="productDesc"
-                      id="productDesc"
-                      placeholder="Enter product description"
+                      name="FarmLocation"
+                      id="FarmLocation"
+                      placeholder="Enter farm description"
                       className="caret-color1 border-color1 bg-color1/5 w-full rounded-lg border px-4 py-3 text-sm text-gray-700 outline-none"
-                      value={productDesc}
-                      onChange={(e) => setProductDesc(e.target.value)}
+                      value={farmLocation}
+                      onChange={(e) => setFarmLocation(e.target.value)}
                       required
                     />
                   </div>
                   <div className="flex flex-col">
                     <label
-                      htmlFor="productPrice"
+                      htmlFor="farmContactNumber"
                       className="ml-1 font-medium text-gray-700"
                     >
-                      Product Price
+                      Farm Contact Number
                     </label>
                     <input
                       type="text"
-                      name="productPrice"
-                      id="productPrice"
-                      placeholder="Enter product price"
+                      name="farmContactNumber"
+                      id="farmContactNumber"
+                      placeholder="Enter farm contact number"
                       className="caret-color1 border-color1 bg-color1/5 w-full rounded-lg border px-4 py-3 text-sm text-gray-700 outline-none"
-                      value={productPrice}
-                      onChange={(e) => setProductPrice(e.target.value)}
+                      value={farmContactNumber}
+                      onChange={(e) => setFarmContactNumber(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="farmEmail"
+                      className="ml-1 font-medium text-gray-700"
+                    >
+                      Farm email
+                    </label>
+                    <input
+                      type="text"
+                      name="farmEmail"
+                      id="farmEmail"
+                      placeholder="Enter farm rmail"
+                      className="caret-color1 border-color1 bg-color1/5 w-full rounded-lg border px-4 py-3 text-sm text-gray-700 outline-none"
+                      value={farmEmail}
+                      onChange={(e) => setFarmEmail(e.target.value)}
                     />
                   </div>
                   <Button

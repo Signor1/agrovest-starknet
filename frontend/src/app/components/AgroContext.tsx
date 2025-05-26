@@ -9,7 +9,7 @@ import React from "react";
 const AgroContext = ({ children }: { children: React.ReactNode }) => {
   const { account, address } = useAccount();
   const providers = new RpcProvider({
-    nodeUrl: process.env.NEXT_PUBLIC_API_KEY!,
+    nodeUrl: "https://starknet-sepolia.g.alchemy.com/starknet/version/rpc/v0_8/FtlFKmlVF7DMCHmzZHQDu",
   });
 
   const agrovestContract = new Contract(
