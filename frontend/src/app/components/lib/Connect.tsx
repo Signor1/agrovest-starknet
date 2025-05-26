@@ -64,12 +64,12 @@ const ConnectModal = () => {
   return (
     <GenericModal
       popoverId="connect-modal"
-      style="text-white border-outline-grey mx-auto w-[90vw] rounded-[25px] border-[1px] border-solid bg-[#1c1b1f] md:h-[30rem] md:w-[45rem]"
+      style="text-[#1c1b1f] border-outline-grey mx-auto w-[90vw] rounded-[25px] border-[1px] border-solid bg-white md:h-[30rem] md:w-[45rem]"
     >
       <div className="flex flex-col">
         <div className="flex w-full p-4 lg:grid lg:grid-cols-5 lg:p-0">
           <div className="lg:border-outline-grey basis-5/6 lg:col-span-2 lg:border-r-[1px] lg:border-solid lg:py-4 lg:pl-8">
-            <h2 className="my-4 text-center text-[1.125em] font-bold text-white lg:text-start">
+            <h2 className="my-4 text-center text-[1.125em] font-bold text-darkgreen lg:text-start">
               Connect a Wallet
             </h2>
           </div>
@@ -163,7 +163,7 @@ const ConnectModal = () => {
 
 const ConnectButton = ({
   text = " Connect Wallet",
-  className = "rounded-[12px] bg-button-primary px-6 py-3 text-background-primary-light transition-all duration-300 hover:rounded-[30px] md:py-4",
+  className = "rounded-[12px] bg-white px-6 py-2 text-darkgreen transition-all duration-300 hover:rounded-[30px] md:py-2.5",
 }: {
   text?: string;
   className?: string;

@@ -37,30 +37,30 @@ function AccountBalance({ address, heading = true }: Props) {
       <div className="flex flex-col gap-4 text-[--headings]">
         <div className="flex justify-between">
           <div className="flex items-center gap-4">
-            <div className="h-8 w-8 rounded-full md:h-12 md:w-12">
+            <div className="h-5 w-5 rounded-full md:h-8 md:w-8">
               <img className="w-full" src="/assets/eth.svg" alt="" />
             </div>
             <div>
-              <p className="mb-2 text-md">ETH</p>
+              <p className=" text-md">ETH</p>
               <p>Ethereum</p>
             </div>
           </div>
           <div className="mr-4 flex items-center">
-            <p className="">{Number(ethBalance).toFixed(3)}</p>
+            <p className="">{Number(ethBalance).toFixed(2)}</p>
           </div>
         </div>
         <div className="flex justify-between">
           <div className="flex items-center gap-4">
-            <div className="h-8 w-8 rounded-full md:h-12 md:w-12">
+            <div className="h-5 w-5 rounded-full md:h-8 md:w-8">
               <img className="w-full" src="/assets/strk.svg" alt="" />
             </div>
             <div>
-              <p className="mb-2 text-md">STRK</p>
+              <p className="text-md">STRK</p>
               <p>Starknet token</p>
             </div>
           </div>
           <div className="mr-4 flex items-center">
-            <p className="">{Number(strkBalance).toFixed(3)}</p>
+            <p className="">{Number(strkBalance).toFixed(2)}</p>
           </div>
         </div>
       </div>

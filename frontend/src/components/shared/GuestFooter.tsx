@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import Logo from "./Logo"
-import logo from "@/public/logo-green.png"
+import logo from "../../../public/logo-green.png"
 import Link from "next/link"
 import { navLinks } from "@/utils/navLinks"
 import { IoLogoInstagram, IoLogoLinkedin, IoLogoTwitter } from "react-icons/io"

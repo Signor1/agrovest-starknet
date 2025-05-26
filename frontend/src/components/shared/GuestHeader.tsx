@@ -6,7 +6,7 @@ import MaxWrapper from "./MaxWrapper";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/utils/navLinks";
-import logo from "@/public/logo-white.png";
+import logo from "../../../public/logo-white.png";
 import { useAccount } from "@starknet-react/core";
 import ConnectButton from "@/app/components/lib/Connect";
 import AddressBar from "@/app/components/lib/AddressBar";

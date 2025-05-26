@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import { nextui } from "@nextui-org/react";
+import tailwindAnimate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: "class",
@@ -7,6 +9,7 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   prefix: "",
   theme: {
@@ -38,15 +41,6 @@ const config: Config = {
         "yellow-secondary": "#FFEECD",
         "grey-light-primary": "#F9FAFB",
       },
-      fontSize: {
-        "3xl": ["4em", "1.09"],
-        "2xl": ["3em", "1.18"],
-        base: ["1em", "1.5"],
-        xl: ["2.25em", "1.1"],
-        l: ["1.5em", "1.2"],
-        md: ["1.1em", "1.18"],
-        sm: [".875em", "1.2"],
-      },
       backgroundImage: {
         "footer-image": "url('/assets/footer-bg.svg')",
         "burner-wallet-bg": "url('/assets/burnerWalletBg.svg')",
@@ -57,7 +51,7 @@ const config: Config = {
       boxShadow: { "popover-shadow": "0px 0px 50px 2px #EC796B33" },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [nextui(), tailwindAnimate],
 } satisfies Config;
 
 export default config;

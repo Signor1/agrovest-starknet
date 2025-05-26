@@ -22,10 +22,10 @@ const UserModal = () => {
   return (
     <GenericModal
       popoverId="user-popover"
-      style="mt-[5rem] w-full bg-transparent backdrop:mt-[5rem] md:mt-[9rem] md:backdrop:mt-[9rem] h-screen"
+      style="mt-[5rem] w-full bg-transparent backdrop:mt-[1.5rem] md:mt-[5rem] md:backdrop:mt-[5rem] h-screen"
     >
       <div className="user-modal mx-auto flex w-full max-w-[--header-max-w] flex-col items-center py-8 md:items-end md:px-12">
-        <div className="flex w-[90vw] max-w-[25rem] flex-col justify-between gap-4 rounded-[24px] bg-[--background] p-8 text-md text-text-primary shadow-popover-shadow transition-colors duration-500 ease-linear md:max-w-[30rem]">
+        <div className="flex max-w-[25rem] flex-col justify-between gap-4 rounded-[24px] bg-[--background] p-8 text-md text-text-primary shadow-popover-shadow transition-colors duration-500 ease-linear md:max-w-[30rem]">
           <div className="flex justify-between">
             <h3 className="text-l text-[--headings]">Connected</h3>
             <button
@@ -37,7 +37,7 @@ const UserModal = () => {
           </div>
 
           <div className="mx-auto">
-            <div className="mx-auto mb-4 h-20 w-20 overflow-clip rounded-full md:h-24 md:w-24">
+            <div className="mx-auto mb-4 h-10 w-10 overflow-clip rounded-full md:h-14 md:w-14">
               {!imageError && starkProfile?.profilePicture ? (
                 <img
                   src={starkProfile?.profilePicture}
@@ -49,7 +49,7 @@ const UserModal = () => {
                 <Blockies
                   seed={address || ""}
                   scale={12}
-                  className="mx-auto h-full w-full scale-110 rounded-full md:scale-100"
+                  className="mx-auto h-full w-full scale-100 rounded-full md:scale-100"
                 />
               )}
             </div>
@@ -75,7 +75,7 @@ const UserModal = () => {
                 popover.hidePopover();
                 disconnect();
               }}
-              className="w-full rounded-[12px] border-[2px] border-solid border-[--borders] bg-[--modal-disconnect-bg] p-3 text-red-secondary md:p-4"
+              className="w-full rounded-[12px] border-[2px] border-solid border-[--borders] bg-[--modal-disconnect-bg] p-2 text-red-secondary md:p-3"
             >
               Disconnect
             </button>
@@ -123,14 +123,14 @@ const AddressBar = () => {
             {!imageError && starkProfile?.profilePicture ? (
               <img
                 src={starkProfile.profilePicture}
-                className="mr-2 h-8 w-8 rounded-full"
+                className="mr-2 h-6 w-6 rounded-full"
                 alt="starknet profile"
                 onError={() => {
                   setImageError(true);
                 }}
               />
             ) : (
-              <Blockies seed={address} className="mr-2 h-8 w-8 rounded-full" />
+              <Blockies seed={address} className="mr-2 h-6 w-6 rounded-full" />
             )}
             {starkProfile?.name
               ? starkProfile.name
