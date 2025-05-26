@@ -1,15 +1,8 @@
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]](https://github.com/Signor1/agrovest-starknet/graphs/contributors)
-[![Forks][forks-shield]](https://github.com/Signor1/agrovest-starknet/fork)
-[![Stargazers][stars-shield]](https://github.com/Signor1/agrovest-starknet/stargazers)
-[![Issues][issues-shield]](https://github.com/Signor1/agrovest-starknet/issues)
-[![MIT License][license-shield]][license-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/Signor1/agrovest-starknet">
-    <img src="images/agrovestLogo.png" alt="Logo" width="200" height="200">
+    <img src="images/agrovestLogo.png" alt="Logo">
   </a>
 
 <h3 align="center">AgroVest on Starknet</h3>
@@ -69,13 +62,13 @@ graph TD
 ## Key Features
 
 <div align="center">
-  <img src="images/MarketPlace.png" alt="Marketplace" width="400">
+  <img src="images/MarketPlace.png" alt="Marketplace">
   <h4>Decentralized Marketplace</h4>
   <p>Direct farmer-to-buyer transactions with Starknet-powered escrow</p>
 </div>
 
 <div align="center">
-  <img src="images/Investment.png" alt="Investment" width="400">
+  <img src="images/Investment.png" alt="Investment" >
   <h4>Asset Tokenization</h4>
   <p>Fractional ownership of agricultural assets using Cairo smart contracts</p>
 </div>
