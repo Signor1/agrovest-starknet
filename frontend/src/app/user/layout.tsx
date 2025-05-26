@@ -5,15 +5,17 @@ import DashboardHeader from "@/components/shared/DashboardHeader";
 import DashboardSidebar from "@/components/shared/DashboardSidebar";
 import React, { useState } from "react";
 
+
 export default function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  
   return (
     <div className="bg-lightgreen/[20%]">
+      
       {/* Page Wrapper Start  */}
       <div className="flex h-screen gap-1.5 overflow-hidden">
         {/* Sidebar Start */}

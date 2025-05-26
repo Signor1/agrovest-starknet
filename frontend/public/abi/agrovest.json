@@ -1,0 +1,670 @@
+[
+    {
+      "name": "core::byte_array::ByteArray",
+      "type": "struct",
+      "members": [
+        {
+          "name": "data",
+          "type": "core::array::Array::<core::bytes_31::bytes31>"
+        },
+        {
+          "name": "pending_word",
+          "type": "core::felt252"
+        },
+        {
+          "name": "pending_word_len",
+          "type": "core::integer::u32"
+        }
+      ]
+    },
+    {
+      "name": "core::integer::u256",
+      "type": "struct",
+      "members": [
+        {
+          "name": "low",
+          "type": "core::integer::u128"
+        },
+        {
+          "name": "high",
+          "type": "core::integer::u128"
+        }
+      ]
+    },
+    {
+      "name": "register_farms",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "business_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "business_image",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "business_location",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "business_contact",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "farmer_address",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "business_email",
+          "type": "core::byte_array::ByteArray"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "name": "update_details",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "index",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "image",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "location",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "contact_info",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "email",
+          "type": "core::byte_array::ByteArray"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "name": "get_farm_index",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u256"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "add_farm_product",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "product_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "product_image",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "product_description",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "product_price",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u256"
+        }
+      ],
+      "state_mutability": "external"
+    },
+    {
+      "name": "update_farm_product",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "index",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "product_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "product_image",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "product_description",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "product_price",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "name": "add_product_to_cart",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "product_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "name": "get_cart_summary",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "buyer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u256"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "get_cart_item_quantity",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "buyer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "product_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u256"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "remove_product_from_cart",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "product_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "name": "set_cart_quantity",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "product_id",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "quantity",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "name": "get_name",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "user",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::felt252"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "get_address",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "core::felt252"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "core::bool",
+      "type": "enum",
+      "variants": [
+        {
+          "name": "False",
+          "type": "()"
+        },
+        {
+          "name": "True",
+          "type": "()"
+        }
+      ]
+    },
+    {
+      "name": "agrovest::types::FarmerDetails",
+      "type": "struct",
+      "members": [
+        {
+          "name": "farm_id",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "business_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "business_image",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "business_location",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "business_contact",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "farmer_address",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "business_email",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "is_registered",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "name": "get_user_farm_details",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "agrovest::types::FarmerDetails"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "get_image",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "user",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::byte_array::ByteArray"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "return_farms",
+      "type": "function",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "core::array::Array::<agrovest::types::FarmerDetails>"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "get_product_count",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "farmer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u256"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "agrovest::types::FarmProducts",
+      "type": "struct",
+      "members": [
+        {
+          "name": "product_name",
+          "type": "core::felt252"
+        },
+        {
+          "name": "product_image",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "product_description",
+          "type": "core::byte_array::ByteArray"
+        },
+        {
+          "name": "product_price",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "product_owner",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "product_id",
+          "type": "core::integer::u256"
+        },
+        {
+          "name": "available",
+          "type": "core::bool"
+        },
+        {
+          "name": "sold",
+          "type": "core::bool"
+        }
+      ]
+    },
+    {
+      "name": "get_farm_product",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "farmer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "name": "product_id",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "agrovest::types::FarmProducts"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "get_farmer_product_count",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "farmer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "core::integer::u256"
+        }
+      ],
+      "state_mutability": "view"
+    },
+    {
+      "name": "initiate_purchase",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "payment_amount",
+          "type": "core::integer::u256"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "name": "confirm_payment",
+      "type": "function",
+      "inputs": [
+        {
+          "name": "buyer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        }
+      ],
+      "outputs": [],
+      "state_mutability": "external"
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::BusinessNameRegistered",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "sender",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "name",
+          "type": "core::felt252"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::BusinessImageRegistered",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "sender",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "image",
+          "type": "core::byte_array::ByteArray"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::BusinessNameUpdated",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "sender",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "name",
+          "type": "core::felt252"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::BusinessImageUpdated",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "sender",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "image",
+          "type": "core::byte_array::ByteArray"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::AddFarmProduct",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "sender",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "product_name",
+          "type": "core::felt252"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::UpdateFarmProduct",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "sender",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "product_id",
+          "type": "core::integer::u256"
+        },
+        {
+          "kind": "data",
+          "name": "product_name",
+          "type": "core::felt252"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::PaymentInitiated",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "buyer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "amount",
+          "type": "core::integer::u256"
+        }
+      ]
+    },
+    {
+      "kind": "struct",
+      "name": "agrovest::events::PurchaseCompleted",
+      "type": "event",
+      "members": [
+        {
+          "kind": "data",
+          "name": "buyer",
+          "type": "core::starknet::contract_address::ContractAddress"
+        },
+        {
+          "kind": "data",
+          "name": "amount",
+          "type": "core::integer::u256"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "agrovest::farm::Farm::Event",
+      "type": "event",
+      "variants": [
+        {
+          "kind": "nested",
+          "name": "BusinessNameRegistered",
+          "type": "agrovest::events::BusinessNameRegistered"
+        },
+        {
+          "kind": "nested",
+          "name": "BusinessImageRegistered",
+          "type": "agrovest::events::BusinessImageRegistered"
+        },
+        {
+          "kind": "nested",
+          "name": "BusinessNameUpdated",
+          "type": "agrovest::events::BusinessNameUpdated"
+        },
+        {
+          "kind": "nested",
+          "name": "BusinessImageUpdated",
+          "type": "agrovest::events::BusinessImageUpdated"
+        },
+        {
+          "kind": "nested",
+          "name": "AddFarmProduct",
+          "type": "agrovest::events::AddFarmProduct"
+        },
+        {
+          "kind": "nested",
+          "name": "UpdateFarmProduct",
+          "type": "agrovest::events::UpdateFarmProduct"
+        },
+        {
+          "kind": "nested",
+          "name": "PaymentInitiated",
+          "type": "agrovest::events::PaymentInitiated"
+        },
+        {
+          "kind": "nested",
+          "name": "PurchaseCompleted",
+          "type": "agrovest::events::PurchaseCompleted"
+        }
+      ]
+    }
+  ]

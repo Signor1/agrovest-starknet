@@ -29,7 +29,9 @@ export function StarknetProvider({ children }: StarknetProviderProps) {
 
   const connectors = [
     ...injected,
-    new WebWalletConnector({ url: "https://web.argent.xyz", }) as unknown as Connector,
+    new WebWalletConnector({
+      url: "https://web.argent.xyz",
+    }) as unknown as Connector,
     new ArgentMobileConnector() as unknown as Connector,
   ];
 
@@ -49,6 +51,8 @@ export function StarknetProvider({ children }: StarknetProviderProps) {
     provider = reddioProvider({ apiKey });
   }
 
+
+
   return (
     <StarknetConfig
       connectors={connectors}
@@ -57,7 +61,8 @@ export function StarknetProvider({ children }: StarknetProviderProps) {
       explorer={voyager}
       autoConnect
     >
-      {children}
+      
+        {children}
     </StarknetConfig>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 import { farmProducts, ProductType } from "@/utils/products";
 import Image from "next/image";
-import React, { FormEvent, useMemo, useState } from "react";
+import React, { FormEvent, useContext, useMemo, useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -13,8 +13,12 @@ import {
 import { FaMinus, FaPlus } from "react-icons/fa6";
 import avatar from "../../../../public/avatar.png";
 import { reviews } from "@/utils/reviews";
+import { KitContext } from "@/context/kit-context";
+import toast from "react-hot-toast";
 const ProductD = ({ id }: { id: string }) => {
   const [currentData, setCurrentData] = useState<ProductType[]>([]);
+
+  const { agrovestContract } = useContext(KitContext);
 
   useMemo(() => {
     const farmDetail = farmProducts.filter(
@@ -37,8 +41,18 @@ const ProductD = ({ id }: { id: string }) => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    toast.loading("Buying Product...");
+    try {
+      const addToCartResult = await agrovestContract!.add_product_to_cart(Number(id));
+      toast.dismiss();
+      toast.success("Product bought successfully");
+    } catch (error) {
+      console.log(error);
+      toast.dismiss();
+      toast.error(`error: ${error}`);
+    }
   };
   return (
     <section className="flex w-full flex-col gap-6 py-4">
@@ -94,6 +108,7 @@ const ProductD = ({ id }: { id: string }) => {
             </div>
           </div>
           <Button
+            onClick={handleSubmit}
             type="button"
             className="mt-3 rounded-[7px] bg-darkgreen px-6 py-2.5 text-base text-lightgreen"
           >
@@ -140,47 +155,6 @@ const ProductD = ({ id }: { id: string }) => {
           ))}
         </section>
       </main>
-
-      {/* modal  */}
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent>
-          {() => (
-            <>
-              <ModalHeader className="flex flex-col gap-1 capitalize text-gray-800">
-                Review Product
-              </ModalHeader>
-              <ModalBody className="flex flex-col gap-4 py-3">
-                <form className="grid w-full gap-4" onSubmit={handleSubmit}>
-                  <div className="flex flex-col">
-                    <label
-                      htmlFor="productName"
-                      className="ml-1 font-medium text-gray-700"
-                    >
-                      Review
-                    </label>
-                    <textarea
-                      name="review"
-                      id="review"
-                      placeholder="Write your review..."
-                      className="caret-color1 border-color1 bg-color1/5 w-full rounded-lg border px-4 py-3 text-sm text-gray-700 outline-none"
-                      value={review}
-                      onChange={(e) => setReview(e.target.value)}
-                      required
-                    ></textarea>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="mt-3 rounded-[7px] bg-darkgreen px-6 py-2.5 text-base text-lightgreen"
-                  >
-                    Submit
-                  </Button>
-                </form>
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
     </section>
   );
 };

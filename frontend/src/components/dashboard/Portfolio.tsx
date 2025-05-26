@@ -59,7 +59,7 @@ const UserPortfolio = () => {
         </Link>
       </div>
 
-      <div className="grid w-full gap-8 md:grid-cols-2">
+      {/* <div className="grid w-full gap-8 md:grid-cols-2">
         {farmData.slice(0, 1).map((res, index) => (
           <div
             key={index}
@@ -90,7 +90,7 @@ const UserPortfolio = () => {
             </button>
           </div>
         ))}
-      </div>
+      </div> */}
     </section>
   );
 };
